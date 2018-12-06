@@ -22,11 +22,33 @@ namespace MethodsAndLists.Test
         }
 
         [TestMethod]
+        public void AddStars_Linq()
+        {
+            // Lägg till tre stjärnor innan och efter siffran
+            
+            List<string> result = x.AddStars_Linq(new List<int> { 1003, 20, -130, 2040 });
+            List<string> expected = new List<string> { "***1003***", "***20***", "***-130***", "***2040***" };
+
+            CollectionAssert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
         public void AddStarsToNumbersHigherThan1000()
         {
             // Samma men lägg bara till stjärnor runt de som är större än 1000
 
             List<string> result = x.AddStarsToNumbersHigherThan1000(new List<int> { 1003, 20, -130, 2040 });
+            List<string> expected = new List<string> { "***1003***", "20", "-130", "***2040***" };
+
+            CollectionAssert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void AddStarsToNumbersHigherThan1000_Linq()
+        {
+            // Samma men lägg bara till stjärnor runt de som är större än 1000
+
+            List<string> result = x.AddStarsToNumbersHigherThan1000_Linq(new List<int> { 1003, 20, -130, 2040 });
             List<string> expected = new List<string> { "***1003***", "20", "-130", "***2040***" };
 
             CollectionAssert.AreEqual(expected, result);
@@ -42,6 +64,21 @@ namespace MethodsAndLists.Test
             */
 
             List<string> result = x.NegativeNumbersIsZip_PositiveNumbersIsZap_ZeroIsBoing(new List<int> { 1003, 20, -130, 0, 2040 });
+            List<string> expected = new List<string> { "ZAP", "ZAP", "ZIP", "BOING", "ZAP" };
+
+            CollectionAssert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void NegativeNumbersIsZip_PositiveNumbersIsZap_ZeroIsBoing_Linq()
+        {
+            /*
+            Negativa tal => "ZIP"
+            Positiva tal => "ZAP"
+            Noll         => "BOING"
+            */
+
+            List<string> result = x.NegativeNumbersIsZip_PositiveNumbersIsZap_ZeroIsBoing_Linq(new List<int> { 1003, 20, -130, 0, 2040 });
             List<string> expected = new List<string> { "ZAP", "ZAP", "ZIP", "BOING", "ZAP" };
 
             CollectionAssert.AreEqual(expected, result);

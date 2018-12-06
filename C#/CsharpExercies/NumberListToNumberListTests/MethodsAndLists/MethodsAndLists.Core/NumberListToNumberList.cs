@@ -131,7 +131,7 @@ namespace MethodsAndLists.Core
 
         public List<int> Add100ToEachNumber_Linq(List<int> input)
         {
-            return input = input.Select(x => x + 100).ToList();
+            return input.Select(x => x + 100).ToList();
         }
 
         public List<int> GetNumbersHigherThan1000_Linq(List<int> input)
