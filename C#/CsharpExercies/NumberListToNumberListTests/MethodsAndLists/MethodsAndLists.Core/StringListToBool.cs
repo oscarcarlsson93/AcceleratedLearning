@@ -9,7 +9,8 @@ namespace MethodsAndLists.Core
 
         public bool AllWordsAreFiveLettersOrLonger(IEnumerable<string> list)
         {
-           
+            throw new NotImplementedException();
+
         }
 
         public bool AllWordsAreFiveLettersOrLonger_Linq(IEnumerable<string> list)

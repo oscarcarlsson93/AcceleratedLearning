@@ -11,7 +11,19 @@ namespace MethodsAndLists.Core
         public string ReportNumberOfNegativeValues(List<int> numbers)
         {
 
-            throw new NotImplementedException();
+            int negativeNumbersCounter = 0;
+            foreach (var number in numbers)
+            {
+                if (number < 0)
+                    negativeNumbersCounter++;
+            }
+
+            if (negativeNumbersCounter == 0)
+                return "Jippi! Det finns inga negativa tal i listan";
+            else if (negativeNumbersCounter == 1)
+                return "Det finns ett negativt tal i listan";
+            else
+                return "Det finns " + negativeNumbersCounter + " st negativa tal i listan";
 
         }
 
@@ -35,7 +47,7 @@ namespace MethodsAndLists.Core
         {
             int test = list.Where(x => x <= 100).Count();
 
-            return test == 0 ? "Något nummer är lägre än (eller lika med) 100" : "Alla nummer är högre än 100";
+            return test == 0 ? "Alla nummer är högre än 100" : "Något nummer är lägre än (eller lika med) 100";
 
 
         }
