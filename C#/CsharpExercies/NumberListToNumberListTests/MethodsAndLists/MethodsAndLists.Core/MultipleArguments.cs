@@ -76,9 +76,9 @@ namespace MethodsAndLists.Core
         public List<List<int>> MultiplicationTable(int rowMax, int colMax)
         {
             if (rowMax <= 0 || colMax <= 0)
-            
+
                 throw new ArgumentException();
-            
+
             var table = new List<List<int>>();
 
             for (int i = 1; i <= rowMax; i++)
@@ -131,7 +131,7 @@ namespace MethodsAndLists.Core
 
         public int[] CombineLists(int[] list1, int[] list2)
         {
-            //var result = new List<int>();
+            var result = new List<int>();
 
             //foreach (var item in list1)
             //{
@@ -143,21 +143,62 @@ namespace MethodsAndLists.Core
             //        break;
             //    }
             //}
-            
+
             //int[] array = result.ToArray();
 
             //return array;
 
-            int[] ulist = list1.Union(list2).ToArray();
-            return ulist;
-
-
-            
+            //int[] ulist = list1.Union(list2).ToArray();
+            //return ulist;
+            for (int i = 0; i < Math.Max(list1.Length, list2.Length); i++)
+            {
+                if (i <= list1.Length - 1)
+                {
+                    result.Add(list1[i]);
+                }
+                if (i <= list2.Length - 1)
+                {
+                    result.Add(list2[i]);
+                }
+            }
+            return result.ToArray();
         }
+        
+
 
         public int[] RotateList(int[] list, int rotation)
         {
-            throw new NotImplementedException();
+            if (list == null)
+            {
+                throw new ArgumentException();
+            }
+            if (rotation == 0 || list.Length == 0)
+            {
+                return list;
+            }
+
+            int left = rotation < 0 ? -rotation : list.Length + rotation;
+            int right = rotation > 0 ? rotation : list.Length - rotation;
+
+            if (left <= right)
+            {
+                for (int i = 0; i < left; i++)
+                {
+                    int first = list[0];
+                    Array.Copy(list, 1, list, 0, list.Length - 1);
+                    list[list.Length - 1] = first;
+                }
+            }
+            if (right <= left)
+            {
+                for (int i = 0; i < right; i++)
+                {
+                    int last = list[list.Length -1];
+                    Array.Copy(list, 0, list, 1, list.Length - 1);
+                    list[0] = last;
+                }
+            }
+            return list;
         }
     }
 }
