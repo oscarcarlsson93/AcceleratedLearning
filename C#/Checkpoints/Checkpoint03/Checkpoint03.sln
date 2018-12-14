@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2050
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkpoint03", "Checkpoint03\Checkpoint03.csproj", "{644E4C58-15CB-4F67-A6B5-A7058C3E920F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "..\UnitTestProject1\UnitTestProject1.csproj", "{70F38EB5-9121-44B9-925F-4911DFF160EC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{644E4C58-15CB-4F67-A6B5-A7058C3E920F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{644E4C58-15CB-4F67-A6B5-A7058C3E920F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{644E4C58-15CB-4F67-A6B5-A7058C3E920F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{644E4C58-15CB-4F67-A6B5-A7058C3E920F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70F38EB5-9121-44B9-925F-4911DFF160EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70F38EB5-9121-44B9-925F-4911DFF160EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70F38EB5-9121-44B9-925F-4911DFF160EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70F38EB5-9121-44B9-925F-4911DFF160EC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {19F49C8A-6936-459A-95DB-ED1053A07403}
+	EndGlobalSection
+EndGlobal
