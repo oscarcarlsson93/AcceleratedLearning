@@ -1,8 +1,9 @@
 use Chinook
-
+--Uppgift 6
 --SELECT * from Album
 --WHere Title LIKE '_ar%'
 
+--Uppgift 7
 --SELECT * from Album
 --WHere Title LIKE 'a%'
 --or Title LIKE 'e%'
@@ -10,6 +11,7 @@ use Chinook
 --or title LIKE 'i%'
 --or title like 'u%'
 --or title like 'y%'
+--Where name like '[aeoiuy}]'
 
 --Uppgift 8
 --Select Title, Name from Album
@@ -41,8 +43,6 @@ use Chinook
 --set TrackNumber = TrackId -14
 --where AlbumId = 4
 
---select COUNT(Genre.GenreId) as NrOfTracks from Track
---join Genre on Track.GenreId = Genre.GenreId
 
 --Uppgift 13
 --select Genre.Name, COUNT(*) as NrOfTracks
