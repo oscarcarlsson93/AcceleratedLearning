@@ -1,8 +1,11 @@
-﻿USE [Blogposts]
-GO
+﻿--USE [Blogposts]
+--GO
 
-CREATE TABLE [dbo].[BlogpostNEW2](
-	[BlogpostId] [int] IDENTITY(1,1) NOT NULL,
-	[Title] [nvarchar](50) NULL,
-	[Author] [nvarchar](50) NULL,
-	)
+--CREATE TABLE [dbo].[BlogpostNEW2](
+--	[BlogpostId] [int] IDENTITY(1,1) NOT NULL,
+--	[Title] [nvarchar](50) NULL,
+--	[Author] [nvarchar](50) NULL,
+--	)
+
+	Select Name from Author
+	JOIN Blogpost on Author.AuthorId = Blogpost.AuthorId

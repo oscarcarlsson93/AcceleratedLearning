@@ -15,8 +15,9 @@ namespace Bloggy
         internal List<BlogPost> GetAllBlogPostsBrief()
         {
 
-            var sql = @"SELECT BlogpostId, Author, Title
-                        FROM BlogPostNEW2";
+            var sql = @"SELECT BlogpostId, Name, Title
+                        FROM Blogpost
+                        JOIN Author on Blogpost.AuthorId = Author.AuthorId";
 
             using (SqlConnection connection = new SqlConnection(conString))
             using (SqlCommand command = new SqlCommand(sql, connection))
@@ -32,7 +33,7 @@ namespace Bloggy
                     var bp = new BlogPost
                     {
                         Id = reader.GetSqlInt32(0).Value,
-                        Author = reader.GetSqlString(1).Value,
+                        AuthorName = reader.GetSqlString(1).Value,
                         Title = reader.GetSqlString(2).Value
                     };
                     list.Add(bp);
@@ -40,36 +41,12 @@ namespace Bloggy
 
                 return list;
             }
-
-            //return new List<BlogPost>
-            //{
-            //new BlogPost
-            //    {
-            //        Id = 1,
-            //        Author = "Ali",
-            //        Title = "Måndag igen"
-            //    },
-
-            //    new BlogPost
-            //    {
-            //        Id = 2,
-            //        Author = "Sue",
-            //        Title = "Inga julklappar"
-            //    },
-
-            //    new BlogPost
-            //    {
-            //        Id = 3,
-            //        Author = "Markus",
-            //        Title = "Lunch"
-            //    }
-            //};
-
         }
 
+        
         internal void UpdateBlogpost(BlogPost blogpost)
         {
-            var sql = @"UPDATE BlogpostNEW2
+            var sql = @"UPDATE Blogpost
                         SET Title = @Title
                         WHERE BlogpostId = @Id";
 
@@ -84,10 +61,51 @@ namespace Bloggy
             }
         }
 
+        internal ShowComments(BlogPost blogpost)
+        {
+            var sql = @"Select * FROM Comments where BlogpostId = @Id";
+
+            using (SqlConnection connection = new SqlConnection(conString))
+            using (SqlCommand command = new SqlCommand(sql, connection))
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                var list = new List<BlogPost>();
+
+                while (reader.Read())
+                {
+                    var bp = new BlogPost
+                    {
+                        Id = reader.GetSqlInt32(0).Value,
+                        AuthorName = reader.GetSqlString(1).Value,
+                        Title = reader.GetSqlString(2).Value
+                    };
+                    list.Add(bp);
+                }
+                return list;
+
+            }
+        }
+        internal void RemoveBlog(BlogPost blogpost)
+        {
+            var sql = @"DELETE FROM Blogpost WHERE BlogpostId = @Id";
+
+            using (SqlConnection connection = new SqlConnection(conString))
+            using (SqlCommand command = new SqlCommand(sql, connection))
+            {
+                connection.Open();
+                command.Parameters.Add(new SqlParameter("Id", blogpost.Id));
+
+                command.ExecuteNonQuery();
+            }
+        }
+
         internal BlogPost GetPostById(int postId)
         {
-            var sql = @"SELECT BlogpostId, Author, Title
-                        FROM BlogPostNEW2 WHERE BlogpostId=@Id";
+            var sql = @"SELECT BlogpostId, AuthorId, Title
+                        FROM Blogpost WHERE BlogpostId=@Id";
 
             using (SqlConnection connection = new SqlConnection(conString))
             using (SqlCommand command = new SqlCommand(sql, connection))
@@ -102,14 +120,12 @@ namespace Bloggy
                     var blogPost = new BlogPost
                     {
                         Id = reader.GetSqlInt32(0).Value,
-                        Author = reader.GetSqlString(1).Value,
+                        AuthorId = reader.GetSqlInt32(1).Value,
                         Title = reader.GetSqlString(2).Value
                     };
                     return blogPost;
                 }
-
                 return null;
-
             }
         }
     }

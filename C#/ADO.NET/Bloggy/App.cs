@@ -26,6 +26,8 @@ namespace Bloggy
             WriteLine("Vad vill du göra?");
             WriteLine("a) Gå till huvudmenyn");
             WriteLine("b) Uppdatera en bloggpost");
+            WriteLine("c) Ta bort en bloggpost");
+            WriteLine("d) Visa kommentarer eller kommentera en bloggpost");
 
             ConsoleKey command = Console.ReadKey(true).Key; //true gör att värdet inte skrivs ut på skärmen
 
@@ -34,6 +36,45 @@ namespace Bloggy
 
             if (command == ConsoleKey.B)
                 PageUpdatePost();
+
+            if (command == ConsoleKey.C)
+                DeletePost();
+
+            if (command == ConsoleKey.D)
+                CommentPost();
+            
+            
+        }
+
+        private void CommentPost()
+        {
+            Header("Kommentera");
+
+            ShowAllBlogPostsBrief();
+            Console.WriteLine("Vilken bloggpost vill du se kommenterarer på/ kommentera");
+
+            int postId = int.Parse(Console.ReadLine());
+            BlogPost blogpost = dataAccess.GetPostById(postId);
+
+            dataAccess.ShowComments(blogpost);
+
+            List<BlogPost> list = dataAccess.ShowComments(blogpost);
+
+            PrintBlogPosts(list);
+
+
+        }
+
+        private void DeletePost()
+        {
+            Header("Ta bort bloggpost");
+
+            ShowAllBlogPostsBrief();
+
+            Console.Write("Vilken bloggpost vill du ta bort? ");
+            int postId = int.Parse(Console.ReadLine());
+            BlogPost blogpost = dataAccess.GetPostById(postId);
+            dataAccess.RemoveBlog(blogpost);
         }
 
         private void PageUpdatePost()
@@ -95,7 +136,7 @@ namespace Bloggy
                 //WriteLine($"{blogPost.Id.ToString().PadRight(5)}{blogPost.Title.ToString().PadRight(40)}{blogPost.Author}");
                 Console.Write(blogPost.Id.ToString().PadRight(5));
                 Console.Write(blogPost.Title.ToString().PadRight(40));
-                Console.Write(blogPost.Author);
+                Console.Write(blogPost.AuthorName);
                 Console.WriteLine();
             }
                 Console.WriteLine();
