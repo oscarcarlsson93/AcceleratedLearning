@@ -10,6 +10,9 @@ namespace Kortspel
         public int Value { get; set; }
         public bool Turned { get; set; }
 
+        svit enum
+          värden enum value
+
         public PlayingCard()
         {
             CardSymbol 

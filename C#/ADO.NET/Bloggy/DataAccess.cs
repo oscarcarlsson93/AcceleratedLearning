@@ -43,7 +43,7 @@ namespace Bloggy
             }
         }
 
-        
+
         internal void UpdateBlogpost(BlogPost blogpost)
         {
             var sql = @"UPDATE Blogpost
@@ -61,9 +61,68 @@ namespace Bloggy
             }
         }
 
-        internal ShowComments(BlogPost blogpost)
+        internal List<Comment> GetCommentsForBlogPost(int id)
         {
-            var sql = @"Select * FROM Comments where BlogpostId = @Id";
+            var sql = @"Select Text, Name FROM Comments
+                 Join Author on Author.AuthorId = Comments.AuthorId
+                    Where BlogpostId = @Id";
+             
+
+            using (SqlConnection connection = new SqlConnection(conString))
+            using (SqlCommand command = new SqlCommand(sql, connection))
+            {
+                connection.Open();
+                command.Parameters.Add(new SqlParameter("Id", id));
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                var list = new List<Comment>();
+
+                while (reader.Read())
+                {
+                    var bp = new Comment
+                    {
+                        
+                        Text = reader.GetSqlString(0).Value,
+                        AuthorName = reader.GetSqlString(1).Value
+                    };
+                    list.Add(bp);
+                }
+
+                return list;
+            }
+        }
+
+        internal BlogPost GetPostsWithSameTag(int postId)
+        {
+            var sql = @"Select Title from Tags join Blogpost on Blogpost.BlogpostId = Tags.TagId Where TagId = @Id";
+
+                    using (SqlConnection connection = new SqlConnection(conString))
+            using (SqlCommand command = new SqlCommand(sql, connection))
+            {
+                connection.Open();
+                command.Parameters.Add(new SqlParameter("Id", postId));
+
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    var blogPost = new BlogPost
+                    {
+                       
+                        Title = reader.GetSqlString(0).Value,
+                        
+                    };
+                    return blogPost;
+                }
+                return null;
+            }
+        }
+
+        internal List<Tags> GetAllTags()
+        {
+            var sql = @"Select Name, TagId from Tags Join Blogpost on Blogpost.BlogpostId = Tags.TagId";
 
             using (SqlConnection connection = new SqlConnection(conString))
             using (SqlCommand command = new SqlCommand(sql, connection))
@@ -72,21 +131,52 @@ namespace Bloggy
 
                 SqlDataReader reader = command.ExecuteReader();
 
-                var list = new List<BlogPost>();
+                var list = new List<Tags>();
 
                 while (reader.Read())
                 {
-                    var bp = new BlogPost
+                    var bp = new Tags
                     {
-                        Id = reader.GetSqlInt32(0).Value,
-                        AuthorName = reader.GetSqlString(1).Value,
-                        Title = reader.GetSqlString(2).Value
+                        Name = reader.GetSqlString(0).Value,
+                        TagId = reader.GetSqlInt32(1).Value,
                     };
                     list.Add(bp);
                 }
                 return list;
-
             }
+        }
+
+        internal int AddNewAuthor(Author commentAuthor)
+        {
+            var sql = @"Insert into Author(Name) OUTPUT INSERTED.AuthorId VALUES (@Name)";
+
+            using (SqlConnection connection = new SqlConnection(conString))
+            using (SqlCommand command = new SqlCommand(sql, connection))
+            {
+                connection.Open();
+                command.Parameters.Add(new SqlParameter("Name", commentAuthor.Name));
+               
+
+                int authorId = (int)command.ExecuteScalar();
+                return authorId;
+            }
+        }
+
+        internal void AddNewComment(Comment blogPost, int postId, int authorId)
+        {
+            var sql = @"INSERT into Comments(Text, BlogpostId, AuthorId) VALUES (@Text, @Id, @AuthorId)";
+
+            using (SqlConnection connection = new SqlConnection(conString))
+            using (SqlCommand command = new SqlCommand(sql, connection))
+            {
+                connection.Open();
+                command.Parameters.Add(new SqlParameter("Text", blogPost.Text));
+                command.Parameters.Add(new SqlParameter("Id", postId));
+                command.Parameters.Add(new SqlParameter("AuthorId", authorId));
+
+                command.ExecuteNonQuery();
+            }
+
         }
         internal void RemoveBlog(BlogPost blogpost)
         {
@@ -107,6 +197,9 @@ namespace Bloggy
             var sql = @"SELECT BlogpostId, AuthorId, Title
                         FROM Blogpost WHERE BlogpostId=@Id";
 
+
+            List<Comment> comments = GetCommentsForBlogPost(postId);
+
             using (SqlConnection connection = new SqlConnection(conString))
             using (SqlCommand command = new SqlCommand(sql, connection))
             {
@@ -121,7 +214,8 @@ namespace Bloggy
                     {
                         Id = reader.GetSqlInt32(0).Value,
                         AuthorId = reader.GetSqlInt32(1).Value,
-                        Title = reader.GetSqlString(2).Value
+                        Title = reader.GetSqlString(2).Value,
+                        Comments = comments
                     };
                     return blogPost;
                 }

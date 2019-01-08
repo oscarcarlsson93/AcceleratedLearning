@@ -14,5 +14,9 @@ namespace Bloggy.Domain
         public DateTime Updated { get; set; }
         public string AuthorName { get; set; }
 
+        public List<Comment> Comments { get; set; }
+        
+
+
     }
 }

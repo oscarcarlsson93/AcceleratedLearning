@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Bloggy
@@ -28,6 +29,7 @@ namespace Bloggy
             WriteLine("b) Uppdatera en bloggpost");
             WriteLine("c) Ta bort en bloggpost");
             WriteLine("d) Visa kommentarer eller kommentera en bloggpost");
+            WriteLine("e) Hantera taggar");
 
             ConsoleKey command = Console.ReadKey(true).Key; //true gör att värdet inte skrivs ut på skärmen
 
@@ -42,27 +44,146 @@ namespace Bloggy
 
             if (command == ConsoleKey.D)
                 CommentPost();
+
+            if (command == ConsoleKey.E)
+            {
+                BlogPostTags();
+            }
+        }
+
+        private void BlogPostTags()
+        {
+            Header("Taggar");
+
+            WriteLine("a) Visa taggar");
+            WriteLine("b) Lägg till en tag");
+            WriteLine("c) Ta bort en tag");
+            WriteLine("d) Gå tillbaka till huvudmenyn");
+
+            ConsoleKey command = Console.ReadKey(true).Key;
+
+            if (command == ConsoleKey.A)
+            {
+                GetAllTags();
+            }
+            if (command == ConsoleKey.B)
+            {
+                AddTag();
+            }
+            if (command == ConsoleKey.C)
+            {
+                DeleteTag();
+            }
+            if (command == ConsoleKey.D) 
+            {
+                PageMainMenu();
+            }
             
             
+        }
+
+        private void DeleteTag()
+        {
+            Header("Ta bort en tagg");
+
+           // ShowTags();
+            Console.WriteLine("Ta bort en tag");
+            throw new NotImplementedException();
+        }
+
+        private void AddTag()
+        {
+            Header("Lägg till en tag");
+            ShowTags();
+            throw new NotImplementedException();
+        }
+
+        private void GetAllTags()
+        {
+            Header("Välj tag för att se liknande inlägg");
+            ShowTags();
+            Console.WriteLine("HEJSAN");
+            int postId = int.Parse(Console.ReadLine());
+            BlogPost blogpost = dataAccess.GetPostsWithSameTag(postId);
+
+            
+        }
+
+        private void ShowTags()
+        {
+            List<Tags> list = dataAccess.GetAllTags();
+            foreach (Tags item in list)
+            {
+            Console.WriteLine(item.TagId + "      "  + item.Name);
+
+            }
+
         }
 
         private void CommentPost()
         {
             Header("Kommentera");
 
+
             ShowAllBlogPostsBrief();
-            Console.WriteLine("Vilken bloggpost vill du se kommenterarer på/ kommentera");
+            Console.WriteLine("Vilken bloggpost vill du se kommentarerna på?");
+            Console.WriteLine();
 
             int postId = int.Parse(Console.ReadLine());
             BlogPost blogpost = dataAccess.GetPostById(postId);
+            Header($"{blogpost.Title} {blogpost.AuthorName}");
+            PrintBlogPostComments(blogpost);
 
-            dataAccess.ShowComments(blogpost);
+            Console.WriteLine();
+            Console.WriteLine("Vill du kommentera bloggposten?");
+            WriteLine("a) Ja");
+            WriteLine("b) Nej(Tillbaka till huvudmenyn)");
+            ConsoleKey command = Console.ReadKey(true).Key; //true gör att värdet inte skrivs ut på skärmen
+            
 
-            List<BlogPost> list = dataAccess.ShowComments(blogpost);
+            if (command == ConsoleKey.A)
+            {
+                AddCommentToBlogPost(blogpost, postId);
+                Console.WriteLine();
+                Console.WriteLine("Din kommentar har nu postats");
+                Console.WriteLine();
+                
+                Thread.Sleep(2000);
+                
+                PageMainMenu();
+            }
+            if (command == ConsoleKey.B)
+            {
+                PageMainMenu();
+            }
+        }
 
-            PrintBlogPosts(list);
+        private void AddCommentToBlogPost(BlogPost blogPost, int postId)
+        {
+            Header("Säg vad du tycker!");
+
+            Console.Write("Skriv in ditt namn:");
+            string newAuthor = Console.ReadLine();
+            Author commentAuthor = new Author() { Name = newAuthor };
+
+            int authorId = dataAccess.AddNewAuthor(commentAuthor);
+
+            Console.WriteLine("Skriv en kommentar: ");
+            string newComment = Console.ReadLine();
+            Comment commentPost = new Comment() { Text = newComment };
 
 
+            dataAccess.AddNewComment(commentPost, postId, authorId);
+
+        }
+
+        private void PrintBlogPostComments(BlogPost blogpost)
+        {
+            foreach (Comment item in blogpost.Comments)
+            {
+                Console.WriteLine($"{item.Text.PadRight(20)}  {item.AuthorName}");
+            }
+           
         }
 
         private void DeletePost()
@@ -101,23 +222,7 @@ namespace Bloggy
             Console.WriteLine("Bloggposten uppdaterad.");
             Console.ReadKey();
             PageMainMenu();
-            //string input = Console.ReadLine();
-            //int.TryParse(input, out int blogId);
-
-            //foreach (var blogPost in list)
-            //{
-            //    if (blogPost.Id == blogId)
-            //    {
-            //        Console.Write("Skriv in ny titel: ");
-            //        string newTitel = Console.ReadLine();
-            //        blogPost.Title = newTitel;
-            //        break;
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine("Kan inte hitta en blogpost med detta id");
-            //    }
-            //}
+          
         }
 
         private void ShowAllBlogPostsBrief()
