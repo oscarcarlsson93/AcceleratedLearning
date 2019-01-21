@@ -1,0 +1,61 @@
+<html>
+<head>
+<title> hej</title>
+<link rel="stylesheet" type="text/css" href="2.css">
+<script src="script.js">
+</script>
+
+</head>
+
+</style>
+<body>
+
+<H1>En rubrik</H1>
+<h1 id ="demo">hej</h1>
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+<h2>En mindre rubik</h2>
+<button id="minknapp" onclick="myFunction()">Blabla</button>
+<p>Ett textstycke med <strong>fet</strong> text</p>
+<br>
+<script>
+function myFunction() {
+  var txt;
+  var person = prompt("Please enter your name:", "Harry Potter");
+  if (person == null || person == "") {
+    txt = "User cancelled the prompt.";
+  } else {
+    txt = "Hello " + person + "! How are you today?";
+  }
+  document.getElementById("demo").innerHTML = txt;
+}
+</script>
+
+<img src="https://i.ytimg.com/vi/-3Q3UBuAqxY/maxresdefault.jpg" width="300" height=" 200"></img><hr>
+
+
+<h2>En tabell</h2>
+<table border = '2' font color = "red">
+	<thead>
+<tr>
+<th>Firstname</th>
+<th>Lastname</th>
+<th>Age</th>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Oscar</td>
+<td>Hejsan</td>
+<td>ASdsd</td>
+</tr>
+</thead>
+</table>	
+</style>
+</body>
+
+</html>
