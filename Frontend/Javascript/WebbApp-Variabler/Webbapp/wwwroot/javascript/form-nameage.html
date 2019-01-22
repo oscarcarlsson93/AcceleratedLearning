@@ -1,0 +1,58 @@
+﻿
+
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        button {
+            display: block;
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2> Enter your name: <br></h2>
+    <input id="input1">
+    <h2> Enter your age: <br></h2>
+    <input id="input2">
+
+    <button id="knapp1">OK</button>
+    <div id="textruta"></div>
+
+
+
+    <script>
+
+        let textruta = document.getElementById("textruta");
+        let knapp1 = document.getElementById("knapp1");
+        let input1 = document.getElementById("input1");
+        let input2 = document.getElementById("input2");
+
+        knapp1.addEventListener("click", showAgeAndNameInfo);
+
+        function showAgeAndNameInfo() {
+            let name = document.getElementById("input1").value;
+            let age = document.getElementById("input2").value;
+
+            if (name == "Oscar" && age == 43) {
+                textruta.innerHTML = "I like you";
+            }
+            else {
+                textruta.innerHTML = `You are ${age} years old and your name is ${name}`;
+            }
+
+        }
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>

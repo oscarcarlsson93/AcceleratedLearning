@@ -1,0 +1,62 @@
+﻿
+<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        button {
+            display: block;
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <button id="knapp1">Visa katt </button>
+    <div id="katt"></div>
+    <button id="knapp2">Skriv text</button>
+    <input id="input1" placeholder="Skriv din text här">
+    <button id="knapp3"> Skriv text utifrån textrutan</button>
+    <div id="textruta"></div>
+
+
+
+    <script>
+
+        let knapp1 = document.getElementById("knapp1");
+        let katt = document.getElementById("katt");
+        let catDisplay = false;
+
+        knapp1.addEventListener("click", showCat);
+        function showCat() {
+            catDisplay = !catDisplay;
+            if (catDisplay) {
+                katt.innerHTML = `<img src="https://www.agria.se/imagevault/publishedmedia/dkyijykbiexir5uesjdu/katt-gaspar_-2-.jpg">`;
+
+            }
+            else {
+                katt.innerHTML = "";
+            }
+        }
+
+        let knapp2 = document.getElementById("knapp2");
+        let textruta = document.getElementById("textruta");
+        knapp2.addEventListener("click", showTextBar);
+
+        function showTextBar() {
+            textruta.innerHTML += "I believe you have my stapler <br>";
+
+        }
+
+        let knapp3 = document.getElementById("knapp3");
+        let input1 = document.getElementById("input1");
+        knapp3.addEventListener("click", showUserInput);
+
+        function showUserInput() {
+            let text = document.getElementById("input1").value;
+            textruta.innerHTML += `${text} <br>`;
+        }
+
+
+    </script>
+
+</body>

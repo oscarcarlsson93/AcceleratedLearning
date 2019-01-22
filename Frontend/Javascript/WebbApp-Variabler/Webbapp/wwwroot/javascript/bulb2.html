@@ -1,0 +1,100 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        button {
+            padding: 10px;
+            width: 300px;
+        }
+
+        img {
+            width: 300px;
+            height: 300px;
+        }
+
+        .bulb {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button id="knapp1">Light bulb 1</button>
+        <button id="knapp2">Light bulb 2</button>
+        <button id="knapp3">Light bulb 3</button>
+    </div>
+
+    <div id="bulb1" class="bulb"></div>
+    <div id="bulb2" class="bulb"></div>
+    <div id="bulb3" class="bulb"></div>
+
+    <script>
+
+        let knapp1 = document.getElementById("knapp1");
+        let bulb1 = document.getElementById("bulb1");
+        let knapp2 = document.getElementById("knapp2");
+        let bulb2 = document.getElementById("bulb2");
+        let knapp3 = document.getElementById("knapp3");
+        let bulb3 = document.getElementById("bulb3");
+
+        let off1 = false;
+        let off2 = false;
+        let off3 = false;
+            
+
+        knapp1.addEventListener("click", lightBulb1)
+        knapp2.addEventListener("click", lightBulb2)
+        knapp3.addEventListener("click", lightBulb3)
+
+        function lightBulb1() {
+            off1 = !off1;
+            if (off1) {
+                bulb1.innerHTML = `<img src="bulb-off.jpg">`;
+            }
+            else {
+                bulb1.innerHTML = `<img src="bulb-on.jpg">`;
+            }
+        }
+
+        function lightBulb2() {
+            off2 = !off2;
+            if (off2) {
+                bulb2.innerHTML = `<img src="bulb-off.jpg">`;
+            }
+            else {
+                bulb2.innerHTML = `<img src="bulb-on.jpg">`;
+            }
+        }
+
+        function lightBulb3() {
+            off3 = !off3;
+            if (off3) {
+                bulb3.innerHTML = `<img src="bulb-off.jpg">`;
+            }
+            else {
+                bulb3.innerHTML = `<img src="bulb-on.jpg">`;
+            }
+
+        }
+        lightBulb1();
+        lightBulb2();
+        lightBulb3();
+
+
+    </script>
+
+
+
+
+
+
+</body>
+
+
+
+</html>

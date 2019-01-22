@@ -1,0 +1,57 @@
+﻿
+<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        button {
+            display: block;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        #kvadrat {
+            border: 1px solid black;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <button id="knapp1" onclick="changeColor(colors)">Click me</button>
+    <button id="knapp2">Or click me</button>
+
+    <div id="kvadrat"></div>
+
+    <script>
+
+        let color;
+        let currentColor;
+        let colors = ['green', 'blue', 'yellow'];
+        let knapp2 = document.getElementById("knapp2");
+        let colorsIndex = 0;
+
+        //funktion som skriver ut saker sätter färgen till colors[colorsIndex
+        //updateState metod som ökar colorIndex och om den blir större än colors längd blir den 0]
+
+        
+        knapp2.addEventListener("click", changeColor)
+        
+
+        function changeColor() {
+
+            for (const color of colors) {
+
+                console.log(color);
+                document.getElementById("kvadrat").style.backgroundColor = color;
+                currentColor = colors.splice[0];
+                knapp2.addEventListener("click", colors.shift[0])
+
+                }
+            }
+
+    </script>
+
+</body>
+</html>
+
+

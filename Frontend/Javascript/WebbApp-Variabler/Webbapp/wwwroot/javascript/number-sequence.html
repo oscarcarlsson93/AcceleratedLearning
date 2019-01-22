@@ -1,0 +1,50 @@
+﻿
+
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        button {
+            display: block;
+            padding: 10px;
+            margin: 10px;
+            width: 180px;
+        }
+        div {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <h2> Enter a number: <br></h2>
+    <input id="input1">
+    <button id="knapp1">OK</button>
+    <div id="textruta".></div>
+
+
+    <script>
+
+        let knapp1 = document.getElementById("knapp1");
+        let input1 = document.getElementById("input1");
+        let textruta = document.getElementById("textruta");
+        knapp1.addEventListener("click", showSequence);
+
+        function showSequence() {
+
+            let maxValue = parseInt(input1.value);
+            let numList = [];
+
+            for (let i = 1; i < maxValue; i++) {
+                numList.push(i);
+
+            }
+            textruta.innerText = numList.join(", ");
+        }
+
+
+    </script>
+    </body>
+</html>

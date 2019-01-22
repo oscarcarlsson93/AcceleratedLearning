@@ -1,0 +1,101 @@
+﻿
+<!DOCTYPE HTML>
+<html>
+<head>
+
+    <style>
+        button {
+            display: block;
+            padding: 10px;
+            margin: 10px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <h1 id="minRubrik"> Rubrik</h1>
+    <p id="ingress">xxxxx</p>
+
+
+    <button id="minKnapp" onclick=" skrivUtText()">Tryck här</button>
+    <button id="minKnapp2">Tryck här igen</button>
+    <button id="minKnapp3"> Skriv i consolen</button>
+    <button id="minKnapp4" onclick="skrivUtConsolen()"> Tryck här för console!</button>
+    <button id="minKnapp5"> Skriv i consolen 5</button>
+
+
+    <button id="minKnapp6a" onclick="changeHeader()">Tryck för att ändra rubrik</button>
+    <button id="minKnapp6b"> Tryck för att ändra rubrik igen</button>
+
+    <button id="minKnapp7a" onclick="changeHeaderColor()"> Ändra färg på rubriken</button>
+    <button id="minKnapp7b"> Ändra färg på rubriken igen</button>
+
+
+
+
+
+
+
+
+
+    <script>
+        let ingress = document.getElementById("ingress");
+        ingress.innerText = "Hello world!";
+
+
+        
+        //Funktioner
+        function skrivUtText() {
+            alert("Hej!");
+        }
+
+        function skrivUtConsolen() {
+            alert("Hej consolen!");
+            console.log("Hejsan!");
+        }
+
+        function changeIngress() {
+
+            document.getElementById("ingress").innerHTML = "Välkommen världen!";
+        }
+        changeIngress();
+
+        function changeHeader() {
+            document.getElementById("minRubrik").innerHTML = "En helt ny rubrik";
+        }
+
+        function changeHeaderColor() {
+            document.getElementById("minRubrik").style.color = "red";
+        }
+
+
+        //Knappar
+
+        let minKnapp2 = document.getElementById("minKnapp2");
+        minKnapp2.addEventListener("click", skrivUtText);
+
+        let minKnapp3 = document.getElementById("minKnapp3");
+        minKnapp3.addEventListener("click", skrivUtConsolen);
+
+        let minKnapp5 = document.getElementById("minKnapp5");
+        minKnapp5.addEventListener("click", () => {
+            console.log("Hej knapp 5!");
+        });
+
+
+        let minKnapp6b = document.getElementById("minKnapp6b");
+        minKnapp6b.addEventListener("click", changeHeader);
+
+        let minKnapp7b = document.getElementById("minKnapp7b");
+        minKnapp7b.addEventListener("click", changeHeaderColor);
+
+
+
+
+    </script>
+</body>
+
+
+</html>

@@ -1,0 +1,56 @@
+﻿
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        button {
+            display: block;
+            padding: 10px;
+            margin: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h2> Enter your age: <br></h2>
+    <input id="input1" placeholder="Skriv din text här">
+    <button id="knapp1">OK</button>
+    <div id="textruta"></div>
+
+
+    <script>
+
+        let knapp1 = document.getElementById("knapp1");
+        let input1 = document.getElementById("input1");
+        let textruta = document.getElementById("textruta");
+        knapp1.addEventListener("click", showAgeInfo);
+
+        function isWholeNumber(x) {
+            return parseInt(x) == x;
+        }
+
+        function showAgeInfo() {
+            let text = document.getElementById("input1").value;
+            if (text <= 30) {
+                textruta.innerHTML = "You are still young";
+            }
+           else if (text > 30) {
+                textruta.innerHTML = "You are really old";
+            }
+            else {
+                textruta.innerHTML = "Enter your age!";
+            }
+
+
+        }
+
+    </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        button {
+            display: block;
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="rubrik">Rubrik</h1>
+
+    <button id="knapp1">Grön varannan gång</button>
+    <button id="knapp2">Ändra knappens storlek</button>
+    <button id="knapp3">För musen över mig</button>
+
+    <script>
+
+        let knapp1 = document.getElementById("knapp1");
+        let rubrik = document.getElementById("rubrik");
+        let isGreen = false;
+        knapp1.addEventListener("click", changeColor);
+
+        function changeColor() {
+            if (isGreen == false) {
+                document.getElementById("rubrik").style.color = "green";
+                isGreen = true;
+            }
+            else if (isGreen == true) {
+                document.getElementById("rubrik").style.color = "black";
+                isGreen = false;
+            }
+            else
+                console.log('Something unexpected happened..');
+        }
+
+        let knapp2 = document.getElementById("knapp2");
+        let increaseSize = 20;
+        knapp2.addEventListener("click", changeSize);
+
+        function changeSize() {
+            document.getElementById("knapp2").style.padding = increaseSize + 'px';
+            increaseSize += 10;
+        }
+
+        let knapp3 = document.getElementById("knapp3");
+        let isRed = false;
+        knapp3.addEventListener("mouseenter", changeColorToRed);
+        knapp3.addEventListener("mouseleave", changeColorToBlack);
+
+        function changeColorToRed() {
+                document.getElementById("knapp3").style.color = "red";
+        }
+
+        function changeColorToBlack() {
+            document.getElementById("knapp3").style.color = "black";
+        }
+
+    </script>
+</body>
+</html>

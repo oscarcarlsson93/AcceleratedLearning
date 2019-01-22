@@ -1,0 +1,38 @@
+﻿
+<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        button {
+            display: block;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        #kvadrat {
+            border: 1px solid black;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <button id="knapp1" onclick="changeColor('red')">Click me</button>
+    <button id="knapp2" onclick="changeColor('green')">Click me</button>
+    <button id="knapp3" onclick="changeColor('blue')">Click me</button>
+    <button id="knapp4">Click to change in a new way</button>
+
+    <div id="kvadrat"></div>
+
+    <script>
+
+        function changeColor(color) {
+            document.getElementById("kvadrat").style.backgroundColor = color;
+            }
+        
+    </script>
+
+</body>
+</html>
+
+

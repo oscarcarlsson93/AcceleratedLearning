@@ -1,0 +1,54 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        body{
+            background-color: black;
+            
+        }
+        button {
+            padding: 10px;
+            width: 300px;
+            
+        }
+        img {
+            width: 300px;
+            height: 300px;
+        }
+        </style>
+    </head>
+
+    <body>
+        <button id="knapp">Light bulb</button>
+        <div id="bulb"></div>
+        <script>
+
+            let knapp = document.getElementById("knapp");
+            let bulb = document.getElementById("bulb");
+            let off = false;
+
+            knapp.addEventListener("click", lightBulb)
+
+            function lightBulb() {
+                 off = !off;
+                if (off) {
+                    bulb.innerHTML = `<img src="bulb-off.jpg">`;
+                }
+                else {
+                    bulb.innerHTML = `<img src="bulb-on.jpg">`;
+
+                }
+            }
+            lightBulb();
+        </script>
+
+
+
+
+
+
+    </body>
+
+
+
+</html>
