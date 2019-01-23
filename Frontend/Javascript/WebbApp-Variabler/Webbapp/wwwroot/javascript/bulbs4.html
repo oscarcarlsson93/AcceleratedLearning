@@ -1,0 +1,94 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+
+        button {
+            padding: 10px;
+            width: 300px;
+        }
+
+        img {
+            width: 300px;
+            height: 300px;
+        }
+
+        .bulb {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button id="knapp1">Light bulb</button>
+
+    </div>
+
+    <div id="bulb1" class="bulb"></div>
+    <div id="bulb2" class="bulb"></div>
+    <div id="bulb3" class="bulb"></div>
+    <div id="bulb4" class="bulb"></div>
+    <div id="bulb5" class="bulb"></div>
+
+    <div id="currentBulb"></div>
+
+
+    <script>
+
+        let knapp1 = document.getElementById("knapp1");
+        let currentBulb = document.getElementById("currentBulb");
+
+        let bulb1 = document.getElementById("bulb1");
+        let bulb2 = document.getElementById("bulb2");
+        let bulb3 = document.getElementById("bulb3");
+        let bulb4 = document.getElementById("bulb4");
+        let bulb5 = document.getElementById("bulb5");
+
+        let bulbIndex = -1;
+        let bulbArray = [bulb1, bulb2, bulb3, bulb4, bulb5];
+
+   
+        knapp1.addEventListener("click", () => {
+            updateState();
+            redraw();
+        });
+
+
+        function updateState() {
+            bulbIndex++;
+            if (bulbIndex >= bulbArray.length) {
+                bulbIndex = 0;
+
+            }
+            currentBulb.innerHTML = `Current bulb: ${bulbIndex + 1}`;
+        }
+
+        function redraw() {
+            bulbArray[bulbIndex].innerHTML = `<img src="bulb-on.jpg">`;
+
+            if (bulbIndex == 0) {
+              bulbArray[bulbArray.length - 1].innerHTML = `<img src="bulb-off.jpg">`
+            }
+            else {
+                bulbArray[bulbIndex - 1].innerHTML = `<img src="bulb-off.jpg">`;
+            }
+        }
+
+        function printAllBulbs() {
+
+            bulb1.innerHTML = `<img src="bulb-off.jpg">`;
+            bulb2.innerHTML = `<img src="bulb-off.jpg">`;
+            bulb3.innerHTML = `<img src="bulb-off.jpg">`;
+            bulb4.innerHTML = `<img src="bulb-off.jpg">`;
+            bulb5.innerHTML = `<img src="bulb-off.jpg">`;
+        }
+        printAllBulbs();
+    </script>
+
+</body>
+</html>

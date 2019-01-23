@@ -1,0 +1,94 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+
+        button {
+            padding: 10px;
+            width: 300px;
+        }
+
+        img {
+            width: 300px;
+            height: 300px;
+        }
+
+        .bulb {
+            display: inline-block;
+        }
+        input{
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>EXTRA</h2>
+    <input id="input1" placeholder="Enter number of bulbs">
+
+    <div id="buttons"></div>
+
+    <div id="lightBulb"></div>
+
+
+ 
+
+    <script>
+        let input = document.getElementById("input");
+        let buttons = document.getElementById("buttons");
+        let lightBulb = document.getElementById("lightBulb");
+
+        let bulbIndex = -1;
+
+
+
+        for 
+
+        knapp1.addEventListener("click", () => {
+            updateState();
+            redraw();
+        });
+
+
+        function updateState() {
+            bulbIndex++;
+            if (bulbIndex >= bulbArray.length) {
+                bulbIndex = 0;
+
+            }
+            //currentBulb.innerHTML = `Current bulb: ${bulbIndex + 1}`;
+        }
+
+        function redraw() {
+            bulbArray[bulbIndex].innerHTML = `<img src="bulb-on.jpg">`;
+
+            if (bulbIndex == 0) {
+                bulbArray[bulbArray.length - 1].innerHTML = `<img src="bulb-off.jpg">`;
+            }
+            else {
+                bulbArray[bulbIndex - 1].innerHTML = `<img src="bulb-off.jpg">`;
+            }
+        }
+
+        function printAllBulbs() {
+
+            bulb1.innerHTML = `<img src="bulb-off.jpg">`;
+            bulb2.innerHTML = `<img src="bulb-off.jpg">`;
+            bulb3.innerHTML = `<img src="bulb-off.jpg">`;
+            bulb4.innerHTML = `<img src="bulb-off.jpg">`;
+            bulb5.innerHTML = `<img src="bulb-off.jpg">`;
+        }
+        printAllBulbs();
+
+
+
+    </script>
+
+
+</body>
+</html>

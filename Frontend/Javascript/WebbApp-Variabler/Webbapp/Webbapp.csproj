@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\bootstrap\bootstrap-demos\style\" />
     <Folder Include="wwwroot\javascriptintro\" />
   </ItemGroup>
 

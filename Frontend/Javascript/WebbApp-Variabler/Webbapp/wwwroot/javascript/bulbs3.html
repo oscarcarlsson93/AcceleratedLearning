@@ -1,0 +1,82 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        button {
+            padding: 10px;
+            width: 300px;
+        }
+
+        img {
+            width: 300px;
+            height: 300px;
+        }
+
+        .bulb {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button id="knapp1">Light all bulbs</button>
+        
+    </div>
+
+    <div id="bulb1" class="bulb"></div>
+    <div id="bulb2" class="bulb"></div>
+    <div id="bulb3" class="bulb"></div>
+
+    <script>
+
+        let knapp1 = document.getElementById("knapp1");
+        let bulb1 = document.getElementById("bulb1");
+        let bulb2 = document.getElementById("bulb2");
+        let bulb3 = document.getElementById("bulb3");
+
+        let off1 = false;
+     
+
+
+        knapp1.addEventListener("click", lightBulb1)
+    
+
+        function lightBulb1() {
+            off1 = !off1;
+            if (off1) {
+                bulb1.innerHTML = `<img src="bulb-off.jpg">`;
+                bulb2.innerHTML = `<img src="bulb-off.jpg">`;
+                bulb3.innerHTML = `<img src="bulb-off.jpg">`;
+
+
+            }
+            else {
+                bulb1.innerHTML = `<img src="bulb-on.jpg">`;
+                bulb2.innerHTML = `<img src="bulb-on.jpg">`;
+                bulb3.innerHTML = `<img src="bulb-on.jpg">`;
+
+
+            }
+        }
+
+        lightBulb1();
+      
+
+
+    </script>
+
+
+
+
+
+
+</body>
+
+
+
+</html>
