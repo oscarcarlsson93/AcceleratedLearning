@@ -1,0 +1,10 @@
+﻿
+img {
+    width: 100px;
+    margin-right: 30px;
+    cursor: pointer;
+    user-select: none;
+}
+.egg{display: inline-block;
+    
+}

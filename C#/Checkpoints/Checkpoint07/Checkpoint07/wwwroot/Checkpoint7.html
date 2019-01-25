@@ -1,0 +1,82 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <link href="style/main.css" rel="stylesheet" />
+    <!-- La till .egg{display: inline-block; i stylesheet så äggen lägger sig bredvid varandra    }-->
+</head>
+
+<body>
+
+    <div id="egg1" class="egg"></div>
+    <div id="egg2" class="egg"></div>
+    <div id="egg3" class="egg"></div>
+
+    <script>
+
+        let egg1 = document.getElementById("egg1");
+        let egg2 = document.getElementById("egg2");
+        let egg3 = document.getElementById("egg3");
+
+        let counter1 = 0;
+        let counter2 = 0;
+        let counter3 = 0;
+
+        egg1.addEventListener("click", crackEgg1)
+        egg2.addEventListener("click", crackEgg2)
+        egg3.addEventListener("click", crackEgg3)
+
+        function crackEgg1() {
+
+            if (counter1 == 0) {
+                egg1.innerHTML = `<img src="img/egg1-closed.png" />`;
+                counter1++;
+            }
+            else if (counter1 == 1) {
+                egg1.innerHTML = `<img src="img/egg2-open.png" />`;
+                counter1++
+            }
+            else {
+                egg1.innerHTML = `<img src="img/egg3-double.png" />`;
+                counter1 = 0;
+            }
+        }
+
+        function crackEgg2() {
+
+            if (counter2 == 0) {
+                egg2.innerHTML = `<img src="img/egg1-closed.png" />`;
+            counter2++;
+            }
+            else if (counter2 == 1) {
+                egg2.innerHTML = `<img src="img/egg2-open.png" />`;
+                counter2++
+            }
+            else {
+                egg2.innerHTML = `<img src="img/egg3-double.png" />`;
+                counter2 = 0;
+            }
+        }
+
+        function crackEgg3() {
+
+            if (counter3 == 0) {
+                egg3.innerHTML = `<img src="img/egg1-closed.png" />`;
+                counter3++;
+            }
+            else if (counter3 == 1) {
+                egg3.innerHTML = `<img src="img/egg2-open.png" />`;
+                counter3++
+            }
+            else {
+                egg3.innerHTML = `<img src="img/egg3-double.png" />`;
+                counter3 = 0;
+            }
+        }
+
+        crackEgg1();
+        crackEgg2();
+        crackEgg3();
+
+    </script>
+</body>
+</html>
