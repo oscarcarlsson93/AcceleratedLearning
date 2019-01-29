@@ -1,0 +1,80 @@
+﻿<!DOCTYPE>
+<html>
+<head>
+
+    <title>
+
+    </title>
+    <style>
+        label, input {
+            display: block;
+        }
+        .ratingButton{
+            display: inline-block;
+        }
+    </style>
+
+
+</head>
+<body>
+
+    <h3>Lägg till dokument</h3>
+
+    <form method="post" action="/webapi6/AddDocument">
+        <label>Förnamn:</label>
+        <input name="Firstname" />
+        <br />
+
+        <label>Antal sidor:</label>
+        <input name="numberOfPages" />
+        <br />
+
+
+        <label>Sammanfattning finns:</label>
+        <input type="checkbox" name="checkbox" checked="checked" value="true" />
+        <br />
+
+        <label>Publiceras:</label>
+        <input type="datetime-local" name="publicDate" /> <br />
+
+        <label>Pris:</label>
+        <input name="price" /> <br />
+
+        <label>Typ:</label>
+        <select name="type">
+            <option value="pdf">PDF</option>
+            <option value="doc">DOC</option>
+            <option value="html">HTML</option>
+            <option value="jpeg">JPEG</option>
+        </select>
+
+        <label>Taggar:</label>
+        <select name="TagList" multiple>
+            <option value="genombrottet">Genombrottet</option>
+            <option value="forskning">Forskning</option>
+            <option value="kultur">Kultur</option>
+
+        </select>
+
+        <label>Betyg:</label>
+        (1)
+        <input type="radio" name="rating" value="1" class="ratingButton" />
+        (2)
+        <input type="radio" name="rating" value="2" class="ratingButton" />
+        (3)
+        <input type="radio" name="rating" class="ratingButton" />
+        (4)
+        <input type="radio" name="rating" class="ratingButton" />
+        (5)
+        <input type="radio" name="rating" class="ratingButton" />
+
+        <br />
+
+
+        <button type="submit">Ok</button>
+    </form>
+    </hr>
+
+
+</body>
+</html>
