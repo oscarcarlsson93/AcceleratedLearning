@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>5forms</title>
+</head>
+<body>
+    <input id="1" class="printArea" oninput="updateFields(this.id)" type="text" /><br />
+    <input id="2" class="printArea" oninput="updateFields(this.id)" type="text" /><br />
+    <input id="3" class="printArea" oninput="updateFields(this.id)" type="text" /><br />
+    <input id="4" class="printArea" oninput="updateFields(this.id)" type="text" /><br />
+    <input id="5" class="printArea" oninput="updateFields(this.id)" type="text" />
+
+</body>
+</html>
+<script>
+    function updateFields(x) {
+        
+        let update = document.getElementById(x).value;      
+
+        let reversedinput = reverse(update);
+        for (var i = 1; i <= 5; i++) {
+            if ((x == 4 && i != 4) || (x != 4 && i == 4)) 
+                document.getElementById(i).value = reversedinput;            
+
+            else if (x != i) 
+                document.getElementById(i).value = update;           
+        }
+    }
+
+    function reverse(update) {
+        let updateArray = update.split("");
+        let reversearray = updateArray.reverse();
+        let joinArray = reversearray.join("");
+        return joinArray;
+    }
+</script>

@@ -135,19 +135,21 @@ async function clickRecreate() {
 
 }
 
+
 document.getElementById("addArea").style.display = "none";
 async function clickShowAddNews() {
     document.getElementById("addArea").style.display = "block";
 
 }
-document.getElementById("updateArea").style.display = "none";
 
+
+document.getElementById("updateArea").style.display = "none";
 async function clickShowUpdateArea(id) {
 
     document.getElementById("updateArea").style.display = "block";
 
 
-    document.getElementById("updateAreaHeader").value = header;
+    document.getElementById("updateAreaHeader").value = id.header;
 
     let response = await fetch(`api/news/${id}`, {
         method: "GET",
@@ -163,7 +165,7 @@ async function clickShowUpdateArea(id) {
         }
     });
     console.log(response);
-    }
+    } 
         
 
 
