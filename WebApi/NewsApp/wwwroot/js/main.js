@@ -37,7 +37,7 @@ async function showAllNews() {
         let html = `<table>
             <tr>
             <th>Id</th>
-            <th>Header</th>
+            <th>Date</th>
             <th>Intro</th>
             <th>Body</th>
             <th>Category</th>
