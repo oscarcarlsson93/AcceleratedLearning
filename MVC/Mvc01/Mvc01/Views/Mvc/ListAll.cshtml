@@ -1,0 +1,33 @@
+﻿@model List<Product>
+
+
+
+<h1>Lista över produkter</h1>
+<p>
+    Antal produkter: @Model.Count
+</p>
+<p>
+    Visa första produkt
+    @Model[0].Name
+
+</p>
+<ul>
+    @foreach (Product x in Model)
+    {
+        <li>
+            @*<a href="/mvc/getbyid/@x.Id">Namn: @x.Name</a>*@
+            <a asp-action="getbyid" asp-route-id="@x.Id">Produkt: @x.Name</a>
+        </li>
+    }
+</ul>
+
+<form asp-action="getbyid" method="get">
+<input  name="id"/>
+    <button type="submit">Tryck!!</button>
+</form>
+
+
+
+<a asp-controller="home" asp-action="index">Tillbaka</a>
+
+

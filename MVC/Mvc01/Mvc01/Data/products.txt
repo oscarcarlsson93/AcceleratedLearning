@@ -1,0 +1,9 @@
+﻿1,Äpple,röd och grön
+2,Päron,grönt och saftigt
+3,Apelsin, orange och saftig
+4,Banan, Gul och böjd
+5,Kiwi, Grön inuti7,Nektarin,Stor kärna7,Nektarin,Stor kärna,Nektarin,kärna
+7,Nektarin,kärna
+7,Krusbär,Grön den med
+8,Katt,Mjau
+9,Nektarin,Grön den med
