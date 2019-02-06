@@ -1,0 +1,48 @@
+﻿
+@using Miniprojekt01.Models
+@using Miniprojekt01.ViewModels
+
+@model PokemonTypeListVm
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+
+
+<h1>Lista över produkter</h1>
+<p>
+    Pokémons registred: @Model.AllPokemons.Count
+</p>
+<p>
+    Last caught Pokémon:
+    @Model.AllPokemons[0].Name
+
+</p>
+<ul>
+    @foreach (Pokemon x in Model.AllPokemons)
+    {
+        <li>
+            @*<a href="/mvc/getbyid/@x.Id">Namn: @x.Name</a>*@
+            <a asp-action="getbyid" asp-route-id="@x.Id">@x.Name</a>
+        </li>
+    }
+</ul>
+
+Search Pokémon by number(001-151):
+<form asp-action="getbyid" method="get">
+    <input name="id" />
+    <button type="submit">Tryck!!</button>
+</form>
+
+Search Pokémon by name:
+<form asp-action="getbyname" method="get">
+    <input name="name" />
+    <button type="submit">Tryck!!</button>
+</form>
+
+Search by type:
+    <form asp-action="getbytype" method="get">
+        <select name="type" asp-items="Model.AllPokemonTypes"></select>
+        <button type="submit">OK!!</button>
+    </form>
+
+<a asp-controller="home" asp-action="index">Tillbaka</a>

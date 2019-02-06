@@ -1,0 +1,9 @@
+﻿001,Bulbasaur,Grass,bulbasaur.jpg
+002,Ivysaur,Grass,ivysaur.jpg
+003,Venusaur,Grass,venusaur.jpg
+004,Charmander,Fire,charmander.jpg
+005,Charmeleon,Fire,charmeleon.jpg
+006,Charizard,Fire,charizard.jpg
+007,Squirtle,Water,squirtle.jpg
+008,Wartortle,Water,wartortle.jpg
+009,Blastoise,Water,blastoise.jpg
