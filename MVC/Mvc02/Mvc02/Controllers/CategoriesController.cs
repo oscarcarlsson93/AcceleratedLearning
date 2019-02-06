@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,8 @@ using Mvc02.Models;
 
 namespace Mvc02.Views
 {
+    //[Authorize (Roles ="traktor")]
+    [Authorize]
     public class CategoriesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -23,6 +26,12 @@ namespace Mvc02.Views
         public async Task<IActionResult> Index()
         {
             return View(await _context.Categories.ToListAsync());
+        }
+
+        public async Task<IActionResult> ShowAllConnectedProducts(int? id)
+        {
+            var xxx = await _context.Product.Include(x => x.Category).Where(x => x.Id == id).ToListAsync();
+            return View(xxx);
         }
 
         // GET: Categories/Details/5

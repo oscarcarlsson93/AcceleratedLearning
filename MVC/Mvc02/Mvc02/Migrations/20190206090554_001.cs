@@ -174,6 +174,7 @@ namespace Mvc02.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: false),
                     Price = table.Column<decimal>(nullable: false),
+                    ForSale = table.Column<bool>(nullable: false),
                     CategoryId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

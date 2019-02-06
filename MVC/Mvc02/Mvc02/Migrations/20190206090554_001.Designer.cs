@@ -10,7 +10,7 @@ using Mvc02.Data;
 namespace Mvc02.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190205153946_001")]
+    [Migration("20190206090554_001")]
     partial class _001
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -207,6 +207,8 @@ namespace Mvc02.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("CategoryId");
+
+                    b.Property<bool>("ForSale");
 
                     b.Property<string>("Name")
                         .IsRequired();

@@ -206,6 +206,8 @@ namespace Mvc02.Migrations
 
                     b.Property<int>("CategoryId");
 
+                    b.Property<bool>("ForSale");
+
                     b.Property<string>("Name")
                         .IsRequired();
 

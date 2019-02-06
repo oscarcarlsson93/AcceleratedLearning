@@ -18,6 +18,7 @@ namespace Mvc02.Models
         [Range(0, 1000, ErrorMessage ="Priset måste vara mellan 0 och 1000")]
 
         public decimal Price { get; set; }
+        public bool ForSale { get; set; }
 
         public Category Category { get; set; }
         public int CategoryId { get; set; }

@@ -26,6 +26,8 @@ namespace Mvc02.Controllers
             return View(xxx);
         }
 
+        
+
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -34,7 +36,7 @@ namespace Mvc02.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Product.Include(x=> x.Category)
+            var product = await _context.Product.Include(x => x.Category)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
             {
@@ -73,7 +75,7 @@ namespace Mvc02.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Price,CategoryId")] Product product)
+        public async Task<IActionResult> Create([Bind("Id,Name,Price,CategoryId,ForSale")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +99,14 @@ namespace Mvc02.Controllers
             {
                 return NotFound();
             }
-            return View(product);
+            
+
+            var viewmodel = new CreateProductVm()
+            {
+                AllCategories = _context.Categories.Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString() }),
+                Product = await _context.Product.FindAsync(id)
+            };
+            return View(viewmodel);
         }
 
         // POST: Products/Edit/5
@@ -105,7 +114,7 @@ namespace Mvc02.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,CategoryId,ForSale")] Product product)
         {
             if (id != product.Id)
             {
