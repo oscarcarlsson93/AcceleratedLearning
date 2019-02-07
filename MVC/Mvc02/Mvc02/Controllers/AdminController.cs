@@ -46,7 +46,7 @@ namespace Mvc02.Controllers
         {
             List<IdentityUser> allUsers = await _auth.GetAllUsers();
 
-            return View(allUsers);
+            return View();
         }
     }
 }

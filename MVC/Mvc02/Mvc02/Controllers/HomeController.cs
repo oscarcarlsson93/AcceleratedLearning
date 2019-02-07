@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Mvc02.Models;
+using Mvc02.Models.ViewModels;
 
 namespace Mvc02.Controllers
 {
@@ -24,9 +25,23 @@ namespace Mvc02.Controllers
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
 
             return View();
+
+        }
+
+        public IActionResult Confirmation(ContactUsVm contactUs)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Contact");
+            }
+            else
+            {
+                return View("Confirmation");
+
+            }
+
         }
 
         public IActionResult Privacy()

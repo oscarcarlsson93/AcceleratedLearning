@@ -43,7 +43,9 @@ namespace Mvc02
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultUI()
-                .AddDefaultTokenProviders();
+                .AddDefaultTokenProviders()
+                ;
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddTransient<AuthService>();
