@@ -1,0 +1,202 @@
+Regex-övningar
+
+
+--------------
+Success:
+
+abc
+cab
+bca
+aaa
+ccc
+Fail:
+
+abcc
+caB
+bc
+a aa
+cccc
+
+lösning: ^[a-c][a-z][a-z]$
+Oscars lösning: ^[abc]{3}$
+-------------------
+
+Success:
+
+äpple
+Päron
+traktor
+ö
+Fail:
+
+$
+123
+trakt8r
+oscèr
+
+lösning: ^[a-zA-Zåäö]+$
+Oscars lösning: ^[a-zåäöA-ZÅÄÖ]+$
+----------------------
+
+Multiplikation av två tal
+
+Success:
+
+3*4
+7*8
+12*8
+3*5
+111*2222
+Fail:
+
+3a*4
+3 *4    
+7#8
+12*8a
+*5
+1112222
+
+lösning: ^([0-9]+)[*]([0-9]+)$
+Oscars lösnign: ^\d+\*\d+$
+----------------------
+
+Samma som förra uppgiften men tillåt även blanktecken
+
+Success:
+
+3*4
+7*   8
+12 *8
+   3*5
+   111  *  2222   
+Fail:
+
+3a*4
+7#8
+12*8a
+*5
+111222
+
+lösning: ^([\s+0-9\s+]+)[*\s+]([0-9\s+]+)$
+Oscars lösning: ^\s*\d+\s*\*\s*\d+\s*$
+--------------------------------
+
+Använd grupper (mha paranteser) för att plocka ut faktorerna i multiplikationen (siffrorna runt gångertecknet)
+
+Alltså 3 * 4 => Group1: 3 och Group2: 4 7 * 8 => Group1: 7 och Group2: 8
+
+Success:
+
+3*4
+7*   8
+12 *8
+   3*5
+   111  *  2222   
+Fail:
+
+3a*4
+7#8
+12*8a
+*5
+1112222
+
+lösning: ^\s*(\d+)\s*\*\s*(\d+)\s*$
+
+-------------------
+
+Telefonnummer
+Validera telefonnummer.
+
+Success:
+
+030211223
+031-112233
+073-6401023
+0736401023
+112
+Fail:
+
+78
+031-112233a
+08-22-3344
+1111111111222222222222233333333333
+
+lösning: ^[0-9]{3}-?([0-9]{1,8}?)?$
+Oscars lösning: ^\d{0,3}-?\d{3,7}$
+------------------------
+Produktnummer 
+
+Validera produktnummer.
+
+Success:
+
+AB-100-100
+DE-234-456
+FF-421-334
+Fail:
+
+AB
+AB-100
+AB-10-0-100
+DEE-234-456
+FF-421-334-
+Svar
+
+^[A-Z]{2}-[0-9]{3}-[0-9]{3}$
+
+------------------------
+
+CSS-formatering
+
+a {font:Arial; color:red}
+h1 {padding:10px}
+h3 {margin:20px; padding-right:20px}
+
+
+-------------------------
+Ta bort name:
+ (\s+)?(Name.+",)(\s+)?
+ \((\s+)?(Name.+"),(\s+)?
+
+BÅDA DESSA FUNKAR:
+\(\s*Name.*?".*?",?
+\(\s*Name\s*=\s*"[^"]*",?
+
+
+
+ -------------
+Ta bort required
+
+ \[Required(.+)\s+
+ -----------------------
+ Ta bort metataggar
+
+ <meta.+\s+
+ -----------------
+ Ta bort id
+
+ id='[^']+'\s+
+
+-------------------
+Ta bort kommentarer
+
+(<!--)(\s+)?(\n+)?.+(\s+)?(\n+)?(-->)
+(<!--)(<div)?(\s+)?(\n+)?.+(\s+)?(\n+)?(</div>)?(-->)
+<!--(.*?)-->
+(?=<!--)([\s\S]*?)-->
+
+DENNA FUNKAR: <!--(.|\n)*?-->
+
+-------------------------
+Ta bort mellanslag och tabbar
+
+^\s+
+^\s+[^\n]
+^(\s+)[^\n]
+^\s+[^n]
+^\s+\t+[^\n]
+
+DENNA FUNKAR: ^[ \t]+|[ \t]+$ Alternativt: ^[ \t]+
+--------------------------------------------------------------------------------------------
+REGEX 3 - SVÅRA UPPGIFTER
+
