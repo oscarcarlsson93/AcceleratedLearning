@@ -35,6 +35,7 @@ body {
         display: none;
     }
 }
-h1{
-    color: red;
+.navbar-inverse
+{
+    background-color: red;
 }

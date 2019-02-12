@@ -7,16 +7,22 @@ using HemNet.Data;
 using Microsoft.AspNetCore.Mvc;
 using HemNet.Models;
 using Mvc02.Models.ViewModels;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Hosting;
 
 namespace HemNet.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly SiteConfig _siteConfig;
+        private readonly IHostingEnvironment _hostingenvironment;
 
-        public HomeController(ApplicationDbContext context)
+        public HomeController(ApplicationDbContext context, SiteConfig siteConfig, IHostingEnvironment hostingEnvironment)
         {
             _context = context;
+            _siteConfig = siteConfig;
+            _hostingenvironment = hostingEnvironment;
         }
         public IActionResult Index()
         {
@@ -117,6 +123,26 @@ namespace HemNet.Controllers
             _context.SaveChanges();
             ViewData["Message"] = "Seeding done";
             return View("Index");
+        }
+
+        public IActionResult Migrate()
+        {
+            _context.Database.Migrate();
+            ViewData["Message"] = "Database migrated";
+                return View("Index");
+        }
+
+        public IActionResult FelFelFel()
+        {
+            throw new Exception("Fel fel fel");
+        }
+        public IActionResult SiteConfig()
+        {
+            return Ok(_siteConfig);
+        }
+        public IActionResult Host()
+        {
+            return Ok(_hostingenvironment);
         }
 
     }
