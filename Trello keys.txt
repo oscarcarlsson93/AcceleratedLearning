@@ -1,0 +1,10 @@
+Nyckel: b9ad404b6ac4d408963b68169cb450a6
+
+OAuth: 8a3f8200c24b3db53b5203d9ee0070c261cbe8c8997d4d923e200c4ca50c6c99
+
+Token: 004a816d21c754d3db6a116bc0894fb2f9044da61b214556df4516d05ff672ff
+
+URL: https://api.trello.com/1/members/me/?key=b9ad404b6ac4d408963b68169cb450a6&token=004a816d21c754d3db6a116bc0894fb2f9044da61b214556df4516d05ff672ff
+
+Posta genom Postman: -request POST \
+  --url 'https://api.trello.com/1/cards?idList=idList&keepFromSource=all
