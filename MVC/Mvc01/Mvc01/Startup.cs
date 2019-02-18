@@ -30,6 +30,7 @@ namespace Mvc01
             }
 
             app.UseStaticFiles();
+            app.UseStatusCodePages();
             //app.UseDirectoryBrowser();
 
             app.UseMvc(routes =>

@@ -4,11 +4,9 @@ using System.Text;
 
 namespace TrelloTest
 {
-    public class TrelloBoard
+    class TrelloList
     {
         public string Name { get; set; }
         public string Id { get; set; }
-
-
     }
 }
